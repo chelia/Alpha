@@ -1,0 +1,15 @@
+/**
+ * Created by Moiz.Kachwala on 15-06-2016.
+ */
+
+import mongoose = require("mongoose");
+
+interface UserModel extends mongoose.Document {
+    type: string;
+    username: string;
+    password: string;
+    email: string;
+    phone: number;
+}
+
+export = UserModel;
