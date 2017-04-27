@@ -1,0 +1,62 @@
+<h1>{{title}}</h1>
+<h2>Questions</h2>
+<div class="row">
+    <div class="col-md-12">
+        <div class="error" *ngIf="error">{{error}}</div>
+        <div class="pull-right">
+            <button class="btn btn-success" (click)="addQuestion()">Add New Question</button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Object Id</th>
+                    <th>Type</th>
+                    <th>Category</th>
+                    <th>SubCategory</th>
+                    <th>Level</th>
+                    <th>Topic</th>
+                    <th>Question</th>
+                    <th>Answer 1</th>
+                    <th>Answer 2</th>
+                    <th>Answer 3</th>
+                    <th>Answer 4</th>
+                    <th>Correct Answer</th>
+                    <th>validate Question</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let question of questions" [class.active]="question === selectedQuestion" (click)="onSelect(question)">
+                    <td>{{question._id}}</td>
+                    <td>{{question.type}}</td>
+                    <td>{{question.category}}</td>
+                    <td>{{question.subcategory}}</td>
+                    <td>{{question.level}}</td>
+                    <td>{{question.topic}}</td>
+                    <td>{{question.question}}</td>
+                    <td>{{question.answer1}}</td>
+                    <td>{{question.answer2}}</td>
+                    <td>{{question.answer3}}</td>
+                    <td>{{question.answer4}}</td>
+                    <td>{{question.correctAnswer}}</td>
+                    <td>{{question.validateQuestion}}</td>
+                    <td><button class="btn btn-danger" (click)="deleteQuestion(question, $event)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div *ngIf="selectedQuestion">
+            <h2>
+                {{selectedQuestion.question | uppercase}} is my question
+            </h2>
+            <button class="btn btn-primary" (click)="gotoDetail()">View Details</button>
+        </div>
+    </div>
+</div>
